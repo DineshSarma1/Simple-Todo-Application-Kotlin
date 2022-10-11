@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.daggerhiltmvvplayouttodoapp.ui.todo_list.HomeFragmentViewModel" />
+
+        <variable
+            name="todo"
+            type="com.example.daggerhiltmvvplayouttodoapp.data.Todo" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="top"
+        android:orientation="vertical"
+        tools:context=".ui.todo_list.HomeFragment">
+
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.title}"
+            android:layout_marginVertical="5dp"
+            android:hint="Enter Title" />
+
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.description}"
+            android:layout_marginVertical="5dp"
+            android:hint="Enter Description" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:onClick="@{() -> viewModel.onSaveButtonClicked()}"
+            android:background="@color/cardview_light_background"
+            android:padding="10dp"
+            android:text="Save" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/todoListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </LinearLayout>
+</layout>
